@@ -1,0 +1,24 @@
+{
+  "name": "SoundCloudPlayer",
+  "version": "0.0.0",
+  "description": "Play downloadable songs through HTML5 audio.",
+  "private": true,
+  "main": "",
+  "scripts": {
+    "postinstall": "node_modules/bower/bin/bower install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {},
+  "devDependencies": {
+    "bower": "~1.4",
+    "grunt": "0.4.x",
+    "grunt-file-creator": "0.1.x",
+    "grunt-jsdoc": "0.6.x",
+    "grunt-karma": "0.11.x",
+    "karma": "0.12.x",
+    "karma-jasmine": "0.3.x",
+    "karma-phantomjs-launcher": "0.2.x"
+  }
+}

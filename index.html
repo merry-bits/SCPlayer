@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SoundCloud Player</title>
+  <link
+    href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div ng-app="SCPPlaylist" ng-controller="PlayController as scpPlayer">
+    <audio></audio>
+    <div class="container-fluid" ng-controller="PlaylistController as scpPlaylist">
+      <h1>SoundCloud Player</h1>
+      <p>
+        <form ng-submit="scpPlaylist.searchTracks(scpQ)" class="form-inline">
+          <div class="form-group">
+            <input type="text" name="scp-search" class="form-control"
+              placeholder="Search for a song..." autofocus="autofocus"
+              ng-model="scpQ"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </p>
+      <div ng-show="scpPlaylist.tracks.length">
+        <div
+          class="row scp-row-buffer" ng-repeat="scpTrack in scpPlaylist.tracks"
+        >
+          <span class="col-md-2 text-center"
+          ><button class="btn" ng-click="scpPlayer.playOrPause(scpTrack)"
+            ><span ng-show="scpTrack.paused"
+              >Play</span><span ng-hide="scpTrack.paused"
+              >Pause</span></button></span>
+          <span class="col-md-6">{{ scpTrack.title}}</span>
+          <span class="col-md-3">{{ scpTrack.user.username}}</span>
+          <span class="col-md-1"
+          >{{ scpTrack.duration | date: 'm:ss' }}</span>
+        </div>
+      </div>
+      <div
+        ng-show="scpPlaylist.tracks['length'] != undefined && scpPlaylist.tracks.length == 0">
+        <p class="bg-info">No tracks</p>
+      </div>
+    </div>
+  </div>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/playlist.js"></script>
+</body>
+
+</html>
